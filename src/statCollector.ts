@@ -1,5 +1,6 @@
 import { ChildProcess, spawn } from 'child_process'
 import fs from 'fs/promises'
+import si from 'systeminformation'
 import path from 'path'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
@@ -281,6 +282,8 @@ async function getCPUStats(): Promise<ProcessedCPUStats> {
     })
   })
 
+  logger.info(JSON.stringify(await si.cpu()))
+  logger.info(JSON.stringify(await si.currentLoad()))
   saveMetricsToArtifact(
     'cpu',
     JSON.stringify({ userLoadX, systemLoadX }),

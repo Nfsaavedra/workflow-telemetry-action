@@ -8,6 +8,7 @@ import {
   NetworkStats,
   DiskSizeStats
 } from './interfaces'
+import { cpus } from 'os'
 
 const STATS_FREQ: number =
   parseInt(process.env.WORKFLOW_TELEMETRY_STAT_FREQ || '') || 5000
